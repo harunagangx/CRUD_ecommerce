@@ -1,0 +1,20 @@
+﻿
+
+.filter__widget {
+    font-size: 0.9rem;
+}
+
+.filter__widget select {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .filter__widget select:focus {
+        outline: none !important;
+    }
+
+    .filter__widget option {
+        padding: 5px;
+        font-size: 0.9rem;
+    }

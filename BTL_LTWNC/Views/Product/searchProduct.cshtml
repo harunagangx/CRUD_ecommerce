@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Search";
+}
+
+@model IEnumerable<BTL_LTWNC.Models.EF.Product>
+
+<link rel="stylesheet" href="./css/search.css" asp-append-version="true" />
+
+@await Html.PartialAsync("~/Views/Shared/_CommonSectionPartialView.cshtml", (string)ViewBag.Title)
+
+<section>
+    <div class="container">
+        <div class="col-md-12 col-lg-6">
+                <div class="search__box">
+                    @using (Html.BeginForm("searchProduct", "product", FormMethod.Get, htmlAttributes: new {@class = "w-100"}))
+                    {
+                    @Html.TextBox("search", "", htmlAttributes: new {@class = "search__input" ,@placeholder = "Search...."})
+                    }
+                    <span><i class='bx bx-search'></i></span>
+                </div>
+            </div>
+
+            <div class="row">
+            @foreach (var item in Model)
+            {
+                @await Html.PartialAsync("~/Views/Shared/_ProductPartialView.cshtml", item)
+            }
+        </div>
+    </div>
+</section>

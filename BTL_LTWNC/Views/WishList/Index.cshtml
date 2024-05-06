@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Wishlist";
+}
+
+@model IEnumerable<BTL_LTWNC.Models.EF.WishListItem>
+
+@await Html.PartialAsync("~/Views/Shared/_CommonSectionPartialView.cshtml", (string)ViewBag.Title);
+
+<section>
+    <div class="container">
+        <table class="table bordered">
+            <thead>
+                <tr>
+                    <th class="col-md-3">Images</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr id="trow_@item.iProductID" class="col-md-3">
+                            <td>
+                                <img src="~/public/images/@item.sImageUrl" style="width: 180px; height: 150px; object-fit: cover" />
+                            </td>
+                            <td>@item.iProductID</td>
+                            <td>@item.sProductName</td>
+                            <td>@item.fPrice.ToString("C0")</td>
+                            <td>
+                                <a href="#" data-id="@item.iProductID" class="btn btn-small btn-danger btnDeleteFromWishList" style="color: white">Remove</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="12">
+                            <p class="text-center">Không có bản ghi nào!!!</p>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
